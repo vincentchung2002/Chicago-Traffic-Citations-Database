@@ -6,9 +6,6 @@ final group project in database design modeling (INST327 University of Maryland)
 - sample data, and
 - sample queries
 
-In addition to those four aspects including your critical evaluation of the database itself and the process through which you built it, will also be
-part of the assessment
-
 Logical Design: demonstrate level of understanding of logical design principles
 and methods by submitting an ERD that is an accurate and up-to-date representation of the
 final structure of your database. Once done with database, reverse engineer your database into an ERD. 
