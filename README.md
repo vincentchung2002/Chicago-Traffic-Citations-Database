@@ -1,13 +1,22 @@
 # Chicago-Traffic-Citations-Database
-Vincent's group final group project in database design modeling (INST327)
-The following stages of the project will be graded as separate elements.
+final group project in database design modeling (INST327 University of Maryland)
 
-- Team Contract (team submission)
-- Project Proposal (team submission)
-- Project Logical Design (team submission)
-- Proposal & Logical Design Review (team submission)
-- Progress Report (team submission)
-- Peer Reviews (individual submission)
-- Final Project (team submission)
+- logical design, (as demonstrated by the ERD you designed for your database),
+- physical design, (as demonstrated by the physical database you created based on the ERD),
+- sample data, and
+- sample queries
 
-The database and the report will be of professional quality, in the sense that they could be used as the basis for an actual, small-scale relational database in an actual organization.
+In addition to those four aspects including your critical evaluation of the database itself and the process through which you built it, will also be
+part of the assessment
+
+Logical Design: demonstrate level of understanding of logical design principles
+and methods by submitting an ERD that is an accurate and up-to-date representation of the
+final structure of your database. Once done with database, reverse engineer your database into an ERD. 
+Include an image of your ERD in thewritten report, within the discussion of the logical design.
+
+Physical Design: actual project database that resides on the MySQL server will be the
+showcase of understanding of physical design concepts and methods. Include adding the sample data and
+the views you want to include, take a backup of your database in MySQL
+Workbench. Take the backup as a single, self-contained file, (not as a folder with multiple files,
+one for each table.) Take the backup, restore it back on some other computer to
+make sure that it works. 
