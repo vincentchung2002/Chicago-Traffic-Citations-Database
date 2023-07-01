@@ -1,0 +1,669 @@
+CREATE DATABASE IF NOT EXISTS `chicago_traffic_citations` /*!40100 DEFAULT
+CHARACTER SET utf8 */;
+USE `chicago_traffic_citations`;
+-- MySQL dump 10.13 Distrib 8.0.26, for macos11 (x86_64)
+--
+-- Host: localhost Database: chicago_traffic_citations
+-- ------------------------------------------------------
+-- Server version 8.0.12
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+--
+-- Table structure for table `Fine_Amounts`
+--
+DROP TABLE IF EXISTS `Fine_Amounts`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Fine_Amounts` (
+`Fine_Amount_ID` int(11) NOT NULL,
+`Fine_Level_1_Amount` int(11) NOT NULL,
+`Fine_Level_2_Amount` int(11) NOT NULL,
+`Current_Amount_Due` int(11) NOT NULL,
+`Total Payments` int(11) NOT NULL,
+PRIMARY KEY (`Fine_Amount_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+--
+-- Dumping data for table `Fine_Amounts`
+--
+LOCK TABLES `Fine_Amounts` WRITE;
+/*!40000 ALTER TABLE `Fine_Amounts` DISABLE KEYS */;
+INSERT INTO `Fine_Amounts` VALUES (1,100,200,200,0),(2,100,200,0,200),
+(3,100,200,0,100),(4,150,300,0,150),(5,150,300,150,0),(6,75,150,150,0),
+(7,100,200,0,0),(8,100,200,100,0),(9,60,120,60,0),(10,150,300,300,0),
+(11,200,250,0,200),(12,100,200,33,67),(13,300,600,0,600);
+/*!40000 ALTER TABLE `Fine_Amounts` ENABLE KEYS */;
+UNLOCK TABLES;
+--
+-- Table structure for table `Hearings`
+--
+DROP TABLE IF EXISTS `Hearings`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Hearings` (
+`Hearing_ID` varchar(45) NOT NULL,
+`Hearing_Dispo` varchar(45) NOT NULL,
+`Hearing_Reason` varchar(60) NOT NULL,
+PRIMARY KEY (`Hearing_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+--
+-- Dumping data for table `Hearings`
+--
+LOCK TABLES `Hearings` WRITE;
+/*!40000 ALTER TABLE `Hearings` DISABLE KEYS */;
+INSERT INTO `Hearings` VALUES ('0','N/A','N/A'),('1','Not Liable','Citizen was Not
+Owner or Lessee of Cited Vehicle');
+/*!40000 ALTER TABLE `Hearings` ENABLE KEYS */;
+UNLOCK TABLES;
+--
+-- Table structure for table `Notices`
+--
+DROP TABLE IF EXISTS `Notices`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Notices` (
+`Notice_ID` int(11) NOT NULL,
+`Notice_Number` bigint(20) NOT NULL,
+`Notice_Level` varchar(45) NOT NULL,
+PRIMARY KEY (`Notice_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+--
+-- Dumping data for table `Notices`
+--
+LOCK TABLES `Notices` WRITE;
+/*!40000 ALTER TABLE `Notices` DISABLE KEYS */;
+INSERT INTO `Notices` VALUES (1,5201586250,'SEIZ'),(2,5234871820,'FINL'),
+(3,5228076530,'VIOL'),(4,5233269710,'FINL'),(5,5219674400,'SEIZ'),
+(6,5199289380,'SEIZ'),(7,5225329540,'DETR'),(8,5212146160,'VIOL'),
+(9,5235227160,'FINL'),(10,5210709690,'FINL'),(11,5231657240,'FINL'),
+(12,5146642870,'DETR'),(13,5182305720,'VIOL'),(14,5234898530,'VIOL'),
+(15,5234898570,'FINL'),(16,5232016660,'VIOL'),(17,5230434020,'SEIZ'),(18,0,''),
+(19,5235085950,'FINL'),(20,5235022390,'VIOL'),(21,5183885050,'VIOL'),
+(22,5234863210,'FINL'),(23,5150213160,'FINL'),(24,5232386800,'SEIZ'),
+(25,5234871810,'SEIZ'),(26,5174922000,'DETR'),(27,5234871800,'VIOL'),
+(28,5232703710,'SEIZ'),(29,5234915360,'FINL'),(30,5209732300,'FINL'),
+(31,5234958860,'FINL'),(32,5234871840,'DETR'),(33,5234957950,'FINL'),
+(34,5234884190,'FINL'),(35,5234898520,'FINL'),(36,5235458090,'VIOL'),
+(37,5234915350,'FINL'),(38,5234884180,'FINL'),(39,5234871880,'VIOL'),
+(40,5235023400,'DETR'),(41,5189677050,'DETR'),(42,5152028500,'DETR'),
+(43,5217162760,'VIOL'),(44,5233814350,'FINL'),(45,5230974870,'VIOL'),
+(46,5196094240,'SEIZ'),(47,5234884170,'DETR'),(48,5230139990,'FINL'),
+(49,5160603620,'DETR'),(50,5234872020,'VIOL'),(51,5211659040,'FINL'),
+(52,5235477230,'DETR'),(53,5220787790,'VIOL'),(54,5235166770,'FINL'),
+(55,5234871860,'DETR'),(56,5234884200,'FINL'),(57,5230825670,'DETR'),
+(58,5235006810,'SEIZ'),(59,5222859390,'DETR'),(60,5224674040,'FINL'),
+(61,5234871890,'DETR'),(62,5234532460,'SEIZ'),(63,5236006700,'SEIZ'),
+(64,5233108820,'FINL'),(65,5225464380,'DETR'),(66,5233500990,'SEIZ'),
+(67,5218265500,'DETR'),(68,5231989130,'SEIZ');
+/*!40000 ALTER TABLE `Notices` ENABLE KEYS */;
+UNLOCK TABLES;
+--
+-- Temporary view structure for view `queryfive`
+--
+DROP TABLE IF EXISTS `queryfive`;
+/*!50001 DROP VIEW IF EXISTS `queryfive`*/;
+SET @saved_cs_client = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `queryfive` AS SELECT
+1 AS `Ticket_number`,
+1 AS `Zip_code`,
+1 AS `Unit_description`,
+1 AS `Notice_Level`*/;
+SET character_set_client = @saved_cs_client;
+--
+-- Temporary view structure for view `queryfour`
+--
+DROP TABLE IF EXISTS `queryfour`;
+/*!50001 DROP VIEW IF EXISTS `queryfour`*/;
+SET @saved_cs_client = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `queryfour` AS SELECT
+1 AS `Ticket_Number`,
+1 AS `Ticket_Queue_Date`,
+1 AS `Zip_Code`,
+1 AS `Unit`,
+1 AS `Unit_Description`,
+1 AS `Amount Due`*/;
+SET character_set_client = @saved_cs_client;
+--
+-- Temporary view structure for view `queryone`
+--
+DROP TABLE IF EXISTS `queryone`;
+/*!50001 DROP VIEW IF EXISTS `queryone`*/;
+SET @saved_cs_client = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `queryone` AS SELECT
+1 AS `Vehicle_Make`,
+1 AS `Number of Tickets`*/;
+SET character_set_client = @saved_cs_client;
+--
+-- Temporary view structure for view `querythree`
+--
+DROP TABLE IF EXISTS `querythree`;
+/*!50001 DROP VIEW IF EXISTS `querythree`*/;
+SET @saved_cs_client = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `querythree` AS SELECT
+1 AS `Unit`,
+1 AS `Average Payment`*/;
+SET character_set_client = @saved_cs_client;
+--
+-- Temporary view structure for view `querytwo`
+--
+DROP TABLE IF EXISTS `querytwo`;
+/*!50001 DROP VIEW IF EXISTS `querytwo`*/;
+SET @saved_cs_client = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `querytwo` AS SELECT
+1 AS `Violation_Code`,
+1 AS `Violation_Description`,
+1 AS `License_Plate_Type`,
+1 AS `Number of Tickets`*/;
+SET character_set_client = @saved_cs_client;
+--
+-- Table structure for table `Ticket_Fine_Amounts`
+--
+DROP TABLE IF EXISTS `Ticket_Fine_Amounts`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Ticket_Fine_Amounts` (
+`Ticket_number` bigint(20) NOT NULL,
+`Fine_Amount_ID` int(11) NOT NULL,
+PRIMARY KEY (`Ticket_number`,`Fine_Amount_ID`),
+KEY `fk_Fine_Amounts_has_Tickets_Tickets1_idx` (`Ticket_number`),
+KEY `fk_Fine_Amounts_has_Tickets_Fine_Amounts1_idx` (`Fine_Amount_ID`),
+CONSTRAINT `fk_Fine_Amounts_has_Tickets_Fine_Amounts1` FOREIGN KEY
+(`Fine_Amount_ID`) REFERENCES `fine_amounts` (`fine_amount_id`),
+CONSTRAINT `fk_Fine_Amounts_has_Tickets_Tickets1` FOREIGN KEY (`Ticket_number`)
+REFERENCES `tickets` (`ticket_number`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+--
+-- Dumping data for table `Ticket_Fine_Amounts`
+--
+LOCK TABLES `Ticket_Fine_Amounts` WRITE;
+/*!40000 ALTER TABLE `Ticket_Fine_Amounts` DISABLE KEYS */;
+INSERT INTO `Ticket_Fine_Amounts` VALUES (71746964,1),(7009321329,1),
+(7009321333,1),(7009321335,1),(7009321339,1),(7009321340,1),(7009321349,1),
+(7009321363,1),(7009321365,1),(7009321372,1),(7009321387,1),(7009321405,1),
+(7009321407,1),(7009321419,1),(7009321470,1),(7009321471,1),(7009321728,1),
+(7009321734,1),(7009321737,1),(7009321738,1),(7009321739,1),(7009321740,1),
+(7009323423,1),(7009323426,1),(7009323433,1),(7009323435,1),(7009323444,1),
+(7009325226,1),(7009325236,1),(7009325238,1),(7009340321,1),(71746965,2),
+(7009321352,2),(7009321410,2),(69006797,3),(71379641,3),(71748876,3),(72156572,3),
+(72156573,3),(7009321351,3),(7009321376,3),(7009321378,3),(7009321379,3),
+(7009321381,3),(7009321386,3),(7009321389,3),(7009321392,3),(7009321395,3),
+(7009321456,3),(7009321499,3),(7009321730,3),(7009321741,3),(7009321744,3),
+(7009322597,3),(7009323424,3),(7009323431,3),(7009323440,3),(7009323441,3),
+(7009323447,3),(71742149,4),(71627237,5),(71635608,5),(72154451,6),(7009321334,7),
+(71748856,8),(71748877,8),(7009321373,8),(7009321399,8),(71885598,9),(71898326,10),
+(69006798,11),(7009323437,12),(71526985,13);
+/*!40000 ALTER TABLE `Ticket_Fine_Amounts` ENABLE KEYS */;
+UNLOCK TABLES;
+--
+-- Table structure for table `Ticket_Hearings`
+--
+DROP TABLE IF EXISTS `Ticket_Hearings`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Ticket_Hearings` (
+`Ticket_number` bigint(20) NOT NULL,
+`Hearing_ID` varchar(45) NOT NULL,
+PRIMARY KEY (`Ticket_number`,`Hearing_ID`),
+KEY `fk_Hearings_has_Tickets_Tickets1_idx` (`Ticket_number`),
+KEY `fk_Hearings_has_Tickets_Hearings1_idx` (`Hearing_ID`),
+CONSTRAINT `fk_Hearings_has_Tickets_Hearings1` FOREIGN KEY (`Hearing_ID`)
+REFERENCES `hearings` (`hearing_id`),
+CONSTRAINT `fk_Hearings_has_Tickets_Tickets1` FOREIGN KEY (`Ticket_number`)
+REFERENCES `tickets` (`ticket_number`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+--
+-- Dumping data for table `Ticket_Hearings`
+--
+LOCK TABLES `Ticket_Hearings` WRITE;
+/*!40000 ALTER TABLE `Ticket_Hearings` DISABLE KEYS */;
+INSERT INTO `Ticket_Hearings` VALUES (69006797,'0'),(69006798,'0'),(71379641,'0'),
+(71526985,'0'),(71627237,'0'),(71635608,'0'),(71742149,'0'),(71746964,'0'),
+(71746965,'0'),(71748856,'0'),(71748876,'0'),(71748877,'0'),(71885598,'0'),
+(71898326,'0'),(72154451,'0'),(72156572,'0'),(72156573,'0'),(7009321329,'0'),
+(7009321333,'0'),(7009321334,'1'),(7009321335,'0'),(7009321339,'0'),
+(7009321340,'0'),(7009321349,'0'),(7009321351,'0'),(7009321352,'0'),
+(7009321363,'0'),(7009321365,'0'),(7009321372,'0'),(7009321373,'0'),
+(7009321376,'0'),(7009321378,'0'),(7009321379,'0'),(7009321381,'0'),
+(7009321386,'0'),(7009321387,'0'),(7009321389,'0'),(7009321392,'0'),
+(7009321395,'0'),(7009321399,'0'),(7009321405,'0'),(7009321407,'0'),
+(7009321410,'0'),(7009321419,'0'),(7009321456,'0'),(7009321470,'0'),
+(7009321471,'0'),(7009321499,'0'),(7009321728,'0'),(7009321730,'0'),
+(7009321734,'0'),(7009321737,'0'),(7009321738,'0'),(7009321739,'0'),
+(7009321740,'0'),(7009321741,'0'),(7009321744,'0'),(7009322597,'0'),
+(7009323423,'0'),(7009323424,'0'),(7009323426,'0'),(7009323431,'0'),
+(7009323433,'0'),(7009323435,'0'),(7009323437,'0'),(7009323440,'0'),
+(7009323441,'0'),(7009323444,'0'),(7009323447,'0'),(7009325226,'0'),
+(7009325236,'0'),(7009325238,'0'),(7009340321,'0');
+/*!40000 ALTER TABLE `Ticket_Hearings` ENABLE KEYS */;
+UNLOCK TABLES;
+--
+-- Table structure for table `Tickets`
+--
+DROP TABLE IF EXISTS `Tickets`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Tickets` (
+`Ticket_number` bigint(20) NOT NULL,
+`Issue_date` date NOT NULL,
+`Zip_code` varchar(45) NOT NULL,
+`Ticket_Queue` varchar(45) NOT NULL,
+`Ticket_Queue_Date` date NOT NULL,
+`Officer` varchar(45) NOT NULL,
+`Unit` varchar(45) NOT NULL,
+`Unit_description` varchar(45) NOT NULL,
+PRIMARY KEY (`Ticket_number`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+--
+-- Dumping data for table `Tickets`
+--
+LOCK TABLES `Tickets` WRITE;
+/*!40000 ALTER TABLE `Tickets` DISABLE KEYS */;
+INSERT INTO `Tickets` VALUES (69006797,'2021-01-01','606205042','Paid','2021-01-
+25','1939','25','CPD'),(69006798,'2021-01-01','606205042','Paid','2021-01-
+25','1939','25','CPD'),(71379641,'2021-01-01','604096218','Paid','2021-03-
+15','13735','18','CPD'),(71526985,'2021-01-01','604784731','Paid','2021-04-
+28','8275','9','CPD'),(71627237,'2021-01-01','','Define','2021-01-
+11','7540','24','CPD'),(71635608,'2021-01-01','','Define','2021-01-
+11','5146','716','CPD'),(71742149,'2021-01-01','606293418','Paid','2021-01-
+22','3051','16','CPD'),(71746964,'2021-01-01','606321725','Notice','2021-02-
+11','494','495','Miscellaneous'),(71746965,'2021-01-01','606493226','Paid','2021-
+04-27','494','495','Miscellaneous'),(71748856,'2021-01-01','','Define','2021-02-
+08','371','495','Miscellaneous'),(71748876,'2021-01-01','604091730','Paid','2021-
+03-11','375','495','Miscellaneous'),(71748877,'2021-01-01','','Define','2021-02-
+08','376','495','Miscellaneous'),(71885598,'2021-01-01','','Define','2021-01-
+14','6317','18','CPD'),(71898326,'2021-01-01','606194603','Notice','2021-02-
+01','17198','3','CPD'),(72154451,'2021-01-01','609012772','Notice','2021-01-
+14','9463','1','CPD'),(72156572,'2021-01-01','606591649','Paid','2021-01-
+21','7861','1','CPD'),(72156573,'2021-01-01','605231607','Paid','2021-02-
+21','7861','1','CPD'),(7009321329,'2021-01-01','60651','Notice','2021-01-
+14','CNDT','CNDT','Red Light'),(7009321333,'2021-01-01','606234332','Notice','2021-
+01-14','CNDT','CNDT','Red Light'),(7009321334,'2021-01-
+01','470608002','Dismissed','2021-02-18','CNDT','CNDT','Red Light'),
+(7009321335,'2021-01-01','60624','Notice','2021-01-14','CNDT','CNDT','Red Light'),
+(7009321339,'2021-01-01','60637','Notice','2021-01-14','CNDT','CNDT','Red Light'),
+(7009321340,'2021-01-01','606243449','Notice','2021-01-14','CNDT','CNDT','Red
+Light'),(7009321349,'2021-01-01','60649','Notice','2021-01-14','CNDT','CNDT','Red
+Light'),(7009321351,'2021-01-01','60649','Paid','2021-06-09','CNDT','CNDT','Red
+Light'),(7009321352,'2021-01-01','606331323','Paid','2021-04-05','CNDT','CNDT','Red
+Light'),(7009321363,'2021-01-01','37166','Notice','2021-01-27','CNDT','CNDT','Red
+Light'),(7009321365,'2021-01-01','61832','Notice','2021-01-14','CNDT','CNDT','Red
+Light'),(7009321372,'2021-01-01','606373598','Notice','2021-01-
+14','CNDT','CNDT','Red Light'),(7009321373,'2021-01-01','60827','Court','2021-02-
+25','CNDT','CNDT','Red Light'),(7009321376,'2021-01-01','604114539','Paid','2021-
+03-20','CNDT','CNDT','Red Light'),(7009321378,'2021-01-
+01','432302542','Paid','2021-02-11','CNDT','CNDT','Red Light'),(7009321379,'2021-
+01-01','600904517','Paid','2021-02-12','CNDT','CNDT','Red Light'),
+(7009321381,'2021-01-01','60621','Paid','2021-03-25','CNDT','CNDT','Red Light'),
+(7009321386,'2021-01-01','601313245','Paid','2021-01-23','CNDT','CNDT','Red
+Light'),(7009321387,'2021-01-01','60618','Notice','2021-01-14','CNDT','CNDT','Red
+Light'),(7009321389,'2021-01-01','606391730','Paid','2021-03-19','CNDT','CNDT','Red
+Light'),(7009321392,'2021-01-01','606252910','Paid','2021-02-22','CNDT','CNDT','Red
+Light'),(7009321395,'2021-01-01','607074539','Paid','2021-02-17','CNDT','CNDT','Red
+Light'),(7009321399,'2021-01-01','606512511','Notice','2021-01-
+14','CNDT','CNDT','Red Light'),(7009321405,'2021-01-01','60104','Notice','2021-01-
+14','CNDT','CNDT','Red Light'),(7009321407,'2021-01-01','60506','Notice','2021-01-
+14','CNDT','CNDT','Red Light'),(7009321410,'2021-01-01','78240','Paid','2021-05-
+10','CNDT','CNDT','Red Light'),(7009321419,'2021-01-01','601531403','Notice','2021-
+01-14','CNDT','CNDT','Red Light'),(7009321456,'2021-01-01','60153','Paid','2021-02-
+10','CNDT','CNDT','Red Light'),(7009321470,'2021-01-01','534066517','Notice','2021-
+01-21','CNDT','CNDT','Red Light'),(7009321471,'2021-01-01','52402','Notice','2021-
+01-06','CNDT','CNDT','Red Light'),(7009321499,'2021-01-
+01','606601817','Paid','2021-02-02','CNDT','CNDT','Red Light'),(7009321728,'2021-
+01-01','60620','Notice','2021-01-14','CNDT','CNDT','Red Light'),(7009321730,'2021-
+01-01','463231416','Paid','2021-03-21','CNDT','CNDT','Red Light'),
+(7009321734,'2021-01-01','604192968','Notice','2021-01-14','CNDT','CNDT','Red
+Light'),(7009321737,'2021-01-01','60643','Notice','2021-01-14','CNDT','CNDT','Red
+Light'),(7009321738,'2021-01-01','605162270','Notice','2021-01-
+14','CNDT','CNDT','Red Light'),(7009321739,'2021-01-01','60649','Notice','2021-01-
+14','CNDT','CNDT','Red Light'),(7009321740,'2021-01-01','465162734','Notice','2021-
+01-14','CNDT','CNDT','Red Light'),(7009321741,'2021-01-
+01','606574838','Paid','2021-03-01','CNDT','CNDT','Red Light'),(7009321744,'2021-
+01-01','601758147','Paid','2021-02-15','CNDT','CNDT','Red Light'),
+(7009322597,'2021-01-01','531102630','Paid','2021-03-31','CNDT','CNDT','Red
+Light'),(7009323423,'2021-01-01','611153218','Notice','2021-04-
+09','CNDT','CNDT','Red Light'),(7009323424,'2021-01-01','606094282','Paid','2021-
+02-07','CNDT','CNDT','Red Light'),(7009323426,'2021-01-
+01','463076267','Notice','2021-01-14','CNDT','CNDT','Red Light'),(7009323431,'2021-
+01-01','604311528','Paid','2021-02-20','CNDT','CNDT','Red Light'),
+(7009323433,'2021-01-01','60707','Notice','2021-01-14','CNDT','CNDT','Red Light'),
+(7009323435,'2021-01-01','601641843','Notice','2021-01-14','CNDT','CNDT','Red
+Light'),(7009323437,'2021-01-01','606455977','Notice','2021-01-
+14','CNDT','CNDT','Red Light'),(7009323440,'2021-01-01','606241397','Paid','2021-
+03-28','CNDT','CNDT','Red Light'),(7009323441,'2021-01-
+01','606382004','Paid','2021-03-20','CNDT','CNDT','Red Light'),(7009323444,'2021-
+01-01','60651','Notice','2021-01-14','CNDT','CNDT','Red Light'),(7009323447,'2021-
+01-01','606234346','Paid','2021-03-17','CNDT','CNDT','Red Light'),
+(7009325226,'2021-01-01','60804','Notice','2021-01-14','CNDT','CNDT','Red Light'),
+(7009325236,'2021-01-01','60623','Notice','2021-01-14','CNDT','CNDT','Red Light'),
+(7009325238,'2021-01-01','60020','Notice','2021-01-14','CNDT','CNDT','Red Light'),
+(7009340321,'2021-01-01','60619','Notice','2021-02-01','CNDT','CNDT','Red Light');
+/*!40000 ALTER TABLE `Tickets` ENABLE KEYS */;
+UNLOCK TABLES;
+--
+-- Table structure for table `Tickets_Notices`
+--
+DROP TABLE IF EXISTS `Tickets_Notices`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Tickets_Notices` (
+`Ticket_number` bigint(20) NOT NULL,
+`Notice_ID` int(11) NOT NULL,
+PRIMARY KEY (`Ticket_number`,`Notice_ID`),
+KEY `fk_Tickets_has_Notices_Notices1_idx` (`Notice_ID`),
+KEY `fk_Tickets_has_Notices_Tickets1_idx` (`Ticket_number`),
+CONSTRAINT `fk_Tickets_has_Notices_Notices1` FOREIGN KEY (`Notice_ID`) REFERENCES
+`notices` (`notice_id`),
+CONSTRAINT `fk_Tickets_has_Notices_Tickets1` FOREIGN KEY (`Ticket_number`)
+REFERENCES `tickets` (`ticket_number`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+--
+-- Dumping data for table `Tickets_Notices`
+--
+LOCK TABLES `Tickets_Notices` WRITE;
+/*!40000 ALTER TABLE `Tickets_Notices` DISABLE KEYS */;
+INSERT INTO `Tickets_Notices` VALUES (7009321333,1),(7009321352,2),(72156572,3),
+(7009325236,4),(7009321372,5),(7009321329,6),(7009321376,7),(7009323424,8),
+(7009340321,9),(7009321419,10),(7009321728,11),(72156573,12),(7009321379,13),
+(7009323431,14),(7009323444,15),(71742149,16),(7009323426,17),(71627237,18),
+(71635608,18),(71748856,18),(71748877,18),(71885598,18),(7009321410,19),
+(7009321378,20),(7009321744,21),(7009321363,22),(71746964,23),(72154451,24),
+(7009321339,25),(7009321351,26),(7009321334,27),(7009321405,28),(7009325238,29),
+(7009321738,30),(7009323433,31),(7009321373,32),(7009321365,33),(7009321737,34),
+(7009323423,35),(71748876,36),(7009325226,37),(7009321734,38),(7009321386,39),
+(7009322597,40),(7009321741,41),(7009323440,42),(7009321395,43),(71898326,44),
+(69006797,45),(69006798,45),(7009321340,46),(7009321730,47),(7009321740,48),
+(7009321399,49),(7009321456,50),(7009321470,51),(7009323437,52),(7009321499,53),
+(7009321471,54),(7009321381,55),(7009321739,56),(71379641,57),(7009321387,58),
+(7009323441,59),(71746965,60),(7009321389,61),(7009321349,62),(71526985,63),
+(7009321335,64),(7009321392,65),(7009323435,66),(7009323447,67),(7009321407,68);
+/*!40000 ALTER TABLE `Tickets_Notices` ENABLE KEYS */;
+UNLOCK TABLES;
+--
+-- Table structure for table `Tickets_Vehicle`
+--
+DROP TABLE IF EXISTS `Tickets_Vehicle`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Tickets_Vehicle` (
+`Ticket_number` bigint(20) NOT NULL,
+`Vehicle_ID` int(11) NOT NULL,
+PRIMARY KEY (`Ticket_number`,`Vehicle_ID`),
+KEY `fk_Tickets_has_Vehicle_Vehicle1_idx` (`Vehicle_ID`),
+KEY `fk_Tickets_has_Vehicle_Tickets1_idx` (`Ticket_number`),
+CONSTRAINT `fk_Tickets_has_Vehicle_Tickets1` FOREIGN KEY (`Ticket_number`)
+REFERENCES `tickets` (`ticket_number`),
+CONSTRAINT `fk_Tickets_has_Vehicle_Vehicle1` FOREIGN KEY (`Vehicle_ID`)
+REFERENCES `vehicle` (`vehicle_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+--
+-- Dumping data for table `Tickets_Vehicle`
+--
+LOCK TABLES `Tickets_Vehicle` WRITE;
+/*!40000 ALTER TABLE `Tickets_Vehicle` DISABLE KEYS */;
+INSERT INTO `Tickets_Vehicle` VALUES (7009321333,1),(7009321352,2),(72156572,3),
+(7009325236,4),(7009321372,5),(7009321329,6),(7009321376,7),(7009323424,8),
+(7009340321,9),(7009321419,10),(7009321728,11),(72156573,12),(7009321379,13),
+(7009323431,14),(7009323444,15),(71742149,16),(7009323426,17),(71627237,18),
+(7009321410,19),(7009321378,20),(7009321744,21),(7009321363,22),(71746964,23),
+(72154451,24),(7009321339,25),(7009321351,26),(7009321334,27),(7009321405,28),
+(71748856,29),(7009325238,30),(7009321738,31),(7009323433,32),(7009321373,33),
+(7009321365,34),(7009321737,35),(7009323423,36),(71748876,37),(7009325226,38),
+(7009321734,39),(7009321386,40),(71635608,41),(7009322597,42),(7009321741,43),
+(71885598,44),(7009323440,45),(7009321395,46),(71898326,47),(69006797,48),
+(7009321340,49),(7009321730,50),(7009321740,51),(69006798,52),(7009321399,53),
+(7009321456,54),(7009321470,55),(7009323437,56),(7009321499,57),(7009321471,58),
+(7009321381,59),(7009321739,60),(71379641,61),(71748877,62),(7009321387,63),
+(7009323441,64),(71746965,65),(7009321389,66),(7009321349,67),(71526985,68),
+(7009321335,69),(7009321392,70),(7009323435,71),(7009323447,72),(7009321407,73);
+/*!40000 ALTER TABLE `Tickets_Vehicle` ENABLE KEYS */;
+UNLOCK TABLES;
+--
+-- Table structure for table `Tickets_Violations`
+--
+DROP TABLE IF EXISTS `Tickets_Violations`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Tickets_Violations` (
+`Ticket_number` bigint(20) NOT NULL,
+`Violation_ID` int(11) NOT NULL,
+PRIMARY KEY (`Ticket_number`,`Violation_ID`),
+KEY `fk_Violations_has_Tickets_Tickets1_idx` (`Ticket_number`),
+KEY `fk_Violations_has_Tickets_Violations1_idx` (`Violation_ID`),
+CONSTRAINT `fk_Violations_has_Tickets_Tickets1` FOREIGN KEY (`Ticket_number`)
+REFERENCES `tickets` (`ticket_number`),
+CONSTRAINT `fk_Violations_has_Tickets_Violations1` FOREIGN KEY (`Violation_ID`)
+REFERENCES `violations` (`violation_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+--
+-- Dumping data for table `Tickets_Violations`
+--
+LOCK TABLES `Tickets_Violations` WRITE;
+/*!40000 ALTER TABLE `Tickets_Violations` DISABLE KEYS */;
+INSERT INTO `Tickets_Violations` VALUES (7009321329,1),(7009321333,1),
+(7009321334,1),(7009321335,1),(7009321339,1),(7009321340,1),(7009321349,1),
+(7009321351,1),(7009321352,1),(7009321363,1),(7009321365,1),(7009321372,1),
+(7009321373,1),(7009321376,1),(7009321378,1),(7009321379,1),(7009321381,1),
+(7009321386,1),(7009321387,1),(7009321389,1),(7009321392,1),(7009321395,1),
+(7009321399,1),(7009321405,1),(7009321407,1),(7009321410,1),(7009321419,1),
+(7009321456,1),(7009321470,1),(7009321471,1),(7009321499,1),(7009321728,1),
+(7009321730,1),(7009321734,1),(7009321737,1),(7009321738,1),(7009321739,1),
+(7009321740,1),(7009321741,1),(7009321744,1),(7009322597,1),(7009323423,1),
+(7009323424,1),(7009323426,1),(7009323431,1),(7009323433,1),(7009323435,1),
+(7009323437,1),(7009323440,1),(7009323441,1),(7009323444,1),(7009323447,1),
+(7009325226,1),(7009325236,1),(7009325238,1),(7009340321,1),(69006797,2),
+(71379641,2),(71746964,2),(71746965,2),(71748856,2),(71748876,2),(71748877,2),
+(72156572,2),(72156573,2),(71627237,3),(71635608,3),(71742149,4),(71526985,5),
+(69006798,6),(71898326,7),(72154451,8),(71885598,9);
+/*!40000 ALTER TABLE `Tickets_Violations` ENABLE KEYS */;
+UNLOCK TABLES;
+--
+-- Table structure for table `Vehicle`
+--
+DROP TABLE IF EXISTS `Vehicle`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Vehicle` (
+`Vehicle_ID` int(11) NOT NULL,
+`Vehicle_Make` varchar(45) NOT NULL,
+`License_Plate_Type` varchar(45) NOT NULL,
+PRIMARY KEY (`Vehicle_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+--
+-- Dumping data for table `Vehicle`
+--
+LOCK TABLES `Vehicle` WRITE;
+/*!40000 ALTER TABLE `Vehicle` DISABLE KEYS */;
+INSERT INTO `Vehicle` VALUES (1,'OTHR','PAS'),(2,'OTHR','PAS'),(3,'BMW','PAS'),
+(4,'OTHR','PAS'),(5,'OTHR','PAS'),(6,'OTHR','PAS'),(7,'OTHR','PAS'),
+(8,'OTHR','PAS'),(9,'OTHR','PAS'),(10,'OTHR','PAS'),(11,'OTHR','PAS'),
+(12,'LEXU','PAS'),(13,'OTHR','PAS'),(14,'OTHR','PAS'),(15,'OTHR','PAS'),
+(16,'TOYT','PAS'),(17,'OTHR','PAS'),(18,'CHEV','TMP'),(19,'OTHR','PAS'),
+(20,'OTHR','PAS'),(21,'OTHR','PAS'),(22,'OTHR','PAS'),(23,'HYUN','PAS'),
+(24,'VOLK','PAS'),(25,'OTHR','PAS'),(26,'OTHR','PAS'),(27,'OTHR','PAS'),
+(28,'OTHR','PAS'),(29,'MAZD','HCP'),(30,'OTHR','PAS'),(31,'OTHR','PAS'),
+(32,'OTHR','PAS'),(33,'OTHR','TMP'),(34,'OTHR','PAS'),(35,'OTHR','PAS'),
+(36,'OTHR','PAS'),(37,'CHEV','PAS'),(38,'OTHR','PAS'),(39,'OTHR','PAS'),
+(40,'OTHR','PAS'),(41,'TOYT','TMP'),(42,'OTHR','PAS'),(43,'OTHR','PAS'),
+(44,'SATR','PAS'),(45,'OTHR','PAS'),(46,'OTHR','PAS'),(47,'DODG','PAS'),
+(48,'BUIC','PAS'),(49,'OTHR','PAS'),(50,'OTHR','PAS'),(51,'OTHR','PAS'),
+(52,'BUIC','PAS'),(53,'OTHR','PAS'),(54,'OTHR','PAS'),(55,'OTHR','PAS'),
+(56,'OTHR','PAS'),(57,'OTHR','PAS'),(58,'OTHR','PAS'),(59,'OTHR','PAS'),
+(60,'OTHR','PAS'),(61,'NISS','PAS'),(62,'HYUN','PAS'),(63,'OTHR','PAS'),
+(64,'OTHR','PAS'),(65,'TOYT','PAS'),(66,'OTHR','PAS'),(67,'OTHR','PAS'),
+(68,'CHRY','PAS'),(69,'OTHR','PAS'),(70,'OTHR','PAS'),(71,'OTHR','PAS'),
+(72,'OTHR','PAS'),(73,'OTHR','PAS');
+/*!40000 ALTER TABLE `Vehicle` ENABLE KEYS */;
+UNLOCK TABLES;
+--
+-- Table structure for table `Violations`
+--
+DROP TABLE IF EXISTS `Violations`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Violations` (
+`Violation_ID` int(11) NOT NULL,
+`Violation_Code` varchar(45) NOT NULL,
+`Violation_description` varchar(150) NOT NULL,
+`Violation_Location` varchar(150) NOT NULL,
+PRIMARY KEY (`Violation_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+--
+-- Dumping data for table `Violations`
+--
+LOCK TABLES `Violations` WRITE;
+/*!40000 ALTER TABLE `Violations` DISABLE KEYS */;
+INSERT INTO `Violations` VALUES (1,'9102020','RED LIGHT VIOLATION','30 W 87TH
+STREET'),(2,'0964080B','NO STANDING/PARKING TIME RESTRICTED','58 E HUBBARD'),
+(3,'0964100A','WITHIN 15\' OF FIRE HYDRANT','1542 W BIRCHWOOD'),
+(4,'0964100C','BLOCK ACCESS/ALLEY/DRIVEWAY/FIRELANE','3228 N NAGLE'),
+(5,'0964110A2','DOUBLE PARKING/STANDING CENTRAL BUSINESS DISTRICT','85 E WACKER
+DR'),(6,'0964125B','NO CITY STICKER VEHICLE UNDER/EQUAL TO 16,000 LBS.','249 E
+PEARSON'),(7,'0964130A','PARK ALLEY','6649 S MINERVA
+AVE'),(8,'0964150B','PARKING/STANDING PROHIBITED ANYTIME','79 E 8TH ST'),
+(9,'0976160A','MISSING/NONCOMPLIANT FRONT AND/OR REAR PLATE','220 W ERIE ST');
+/*!40000 ALTER TABLE `Violations` ENABLE KEYS */;
+UNLOCK TABLES;
+--
+-- Final view structure for view `queryfive`
+--
+/*!50001 DROP VIEW IF EXISTS `queryfive`*/;
+/*!50001 SET @saved_cs_client = @@character_set_client */;
+/*!50001 SET @saved_cs_results = @@character_set_results */;
+/*!50001 SET @saved_col_connection = @@collation_connection */;
+/*!50001 SET character_set_client = utf8mb4 */;
+/*!50001 SET character_set_results = utf8mb4 */;
+/*!50001 SET collation_connection = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `queryfive` AS select `t`.`Ticket_number` AS
+`Ticket_number`,`t`.`Zip_code` AS `Zip_code`,`t`.`Unit_description` AS
+`Unit_description`,`n`.`Notice_Level` AS `Notice_Level` from ((`tickets` `t` join
+`tickets_notices` `tn` on((`t`.`Ticket_number` = `tn`.`Ticket_number`))) join
+`notices` `n` on((`tn`.`Notice_ID` = `n`.`Notice_ID`))) where (`n`.`Notice_Level` =
+'VIOL') */;
+/*!50001 SET character_set_client = @saved_cs_client */;
+/*!50001 SET character_set_results = @saved_cs_results */;
+/*!50001 SET collation_connection = @saved_col_connection */;
+--
+-- Final view structure for view `queryfour`
+--
+/*!50001 DROP VIEW IF EXISTS `queryfour`*/;
+/*!50001 SET @saved_cs_client = @@character_set_client */;
+/*!50001 SET @saved_cs_results = @@character_set_results */;
+/*!50001 SET @saved_col_connection = @@collation_connection */;
+/*!50001 SET character_set_client = utf8mb4 */;
+/*!50001 SET character_set_results = utf8mb4 */;
+/*!50001 SET collation_connection = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `queryfour` AS select `t`.`Ticket_number` AS
+`Ticket_Number`,`t`.`Ticket_Queue_Date` AS `Ticket_Queue_Date`,`t`.`Zip_code` AS
+`Zip_Code`,`t`.`Unit` AS `Unit`,`t`.`Unit_description` AS
+`Unit_Description`,concat('$',convert(format(`f`.`Current_Amount_Due`,2) using
+utf8mb4)) AS `Amount Due` from ((`tickets` `t` join `ticket_fine_amounts` `tf`
+on((`t`.`Ticket_number` = `tf`.`Ticket_number`))) join (select
+`fine_amounts`.`Fine_Amount_ID` AS
+`Fine_Amount_ID`,`fine_amounts`.`Current_Amount_Due` AS `Current_Amount_Due` from
+`fine_amounts` group by `fine_amounts`.`Fine_Amount_ID`) `f`
+on((`tf`.`Fine_Amount_ID` = `f`.`Fine_Amount_ID`))) where (`f`.`Current_Amount_Due`
+> 0) order by `t`.`Ticket_Queue_Date` */;
+/*!50001 SET character_set_client = @saved_cs_client */;
+/*!50001 SET character_set_results = @saved_cs_results */;
+/*!50001 SET collation_connection = @saved_col_connection */;
+--
+-- Final view structure for view `queryone`
+--
+/*!50001 DROP VIEW IF EXISTS `queryone`*/;
+/*!50001 SET @saved_cs_client = @@character_set_client */;
+/*!50001 SET @saved_cs_results = @@character_set_results */;
+/*!50001 SET @saved_col_connection = @@collation_connection */;
+/*!50001 SET character_set_client = utf8mb4 */;
+/*!50001 SET character_set_results = utf8mb4 */;
+/*!50001 SET collation_connection = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `queryone` AS select `v`.`Vehicle_Make` AS
+`Vehicle_Make`,count(`t`.`Ticket_number`) AS `Number of Tickets` from (`vehicle`
+`v` join `tickets_vehicle` `t` on((`v`.`Vehicle_ID` = `t`.`Vehicle_ID`))) group by
+`v`.`Vehicle_Make` order by `v`.`Vehicle_Make` */;
+/*!50001 SET character_set_client = @saved_cs_client */;
+/*!50001 SET character_set_results = @saved_cs_results */;
+/*!50001 SET collation_connection = @saved_col_connection */;
+--
+-- Final view structure for view `querythree`
+--
+/*!50001 DROP VIEW IF EXISTS `querythree`*/;
+/*!50001 SET @saved_cs_client = @@character_set_client */;
+/*!50001 SET @saved_cs_results = @@character_set_results */;
+/*!50001 SET @saved_col_connection = @@collation_connection */;
+/*!50001 SET character_set_client = utf8mb4 */;
+/*!50001 SET character_set_results = utf8mb4 */;
+/*!50001 SET collation_connection = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `querythree` AS select `t`.`Unit` AS
+`Unit`,concat('$',convert(format(avg(`f`.`Total Payments`),2) using utf8mb4)) AS
+`Average Payment` from ((`tickets` `t` join `ticket_fine_amounts` `tf`
+on((`t`.`Ticket_number` = `tf`.`Ticket_number`))) join `fine_amounts` `f`
+on((`tf`.`Fine_Amount_ID` = `f`.`Fine_Amount_ID`))) group by `t`.`Unit` order by
+`t`.`Unit` */;
+/*!50001 SET character_set_client = @saved_cs_client */;
+/*!50001 SET character_set_results = @saved_cs_results */;
+/*!50001 SET collation_connection = @saved_col_connection */;
+--
+-- Final view structure for view `querytwo`
+--
+/*!50001 DROP VIEW IF EXISTS `querytwo`*/;
+/*!50001 SET @saved_cs_client = @@character_set_client */;
+/*!50001 SET @saved_cs_results = @@character_set_results */;
+/*!50001 SET @saved_col_connection = @@collation_connection */;
+/*!50001 SET character_set_client = utf8mb4 */;
+/*!50001 SET character_set_results = utf8mb4 */;
+/*!50001 SET collation_connection = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `querytwo` AS select `v`.`Violation_Code` AS
+`Violation_Code`,`v`.`Violation_description` AS
+`Violation_Description`,`vh`.`License_Plate_Type` AS `License_Plate_Type`,count(0)
+AS `Number of Tickets` from ((((`tickets` `t` join `tickets_vehicle` `tv`
+on((`t`.`Ticket_number` = `tv`.`Ticket_number`))) join `vehicle` `vh`
+on((`tv`.`Vehicle_ID` = `vh`.`Vehicle_ID`))) join `tickets_violations` `tvl`
+on((`t`.`Ticket_number` = `tvl`.`Ticket_number`))) join `violations` `v`
+on((`tvl`.`Violation_ID` = `v`.`Violation_ID`))) where (`vh`.`License_Plate_Type` =
+'pas') group by
+`v`.`Violation_Code`,`v`.`Violation_description`,`vh`.`License_Plate_Type` */;
+/*!50001 SET character_set_client = @saved_cs_client */;
+/*!50001 SET character_set_results = @saved_cs_results */;
+/*!50001 SET collation_connection = @saved_col_connection */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+-- Dump completed on 2023-05-15 20:39:28
