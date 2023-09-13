@@ -1,5 +1,7 @@
 # Chicago-Traffic-Citations-Database
-final group project in database design modeling (INST327 University of Maryland)
+Final group project in database design modeling (INST327 University of Maryland)
+
+Final grade in class: -A
 
 - logical design, (as demonstrated by the ERD you designed for your database),
 - physical design, (as demonstrated by the physical database you created based on the ERD),
@@ -17,3 +19,4 @@ the views you want to include, take a backup of your database in MySQL
 Workbench. Take the backup as a single, self-contained file, (not as a folder with multiple files,
 one for each table.) Take the backup, restore it back on some other computer to
 make sure that it works. 
+
