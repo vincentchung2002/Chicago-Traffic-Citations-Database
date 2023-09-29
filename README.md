@@ -1,7 +1,4 @@
 # Chicago-Traffic-Citations-Database
-Final group project in database design modeling (INST327 University of Maryland)
-
-Final grade in class: -A
 
 - logical design, (as demonstrated by the ERD you designed for your database),
 - physical design, (as demonstrated by the physical database you created based on the ERD),
